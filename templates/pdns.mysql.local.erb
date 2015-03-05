@@ -10,9 +10,11 @@ gmysql-host=<%= @host %>
 gmysql-dbname=<%= @dbname %>
 gmysql-user=<%= @user %>
 gmysql-password=<%= @password %>
-gmysql-dnssec=<%= @dnssec %>
-<% if @port %>
+<% unless @port.nil? %>
 gmysql-port=<%= @port %>
+<% end %>
+<% unless @dnssec.nil? %>
+gmysql-dnssec=<%= @dnssec %>
 <% end %>
 <% if @osfamily == "Redhat" %>       
 <%= @cfg_include_name %>=<%= @cfg_include_path %>
