@@ -9,6 +9,7 @@
 # port     - port to connect to
 # dbname   - which database to use
 # dnssec   - enable or disable dnssec either yes or no
+# template - custom template
 #
 class powerdns::mysql(
   $package  = $powerdns::params::package_mysql,
@@ -19,7 +20,8 @@ class powerdns::mysql(
   $host     = 'localhost',
   $port     = '3306',
   $dbname   = 'pdns',
-  $dnssec   = 'yes'
+  $dnssec   = 'yes',
+  $template = 'powerdns/pdns.mysql.local.erb'
 ) inherits powerdns::params {
 
   $package_source = $source ? {
@@ -45,7 +47,7 @@ class powerdns::mysql(
     group   => root,
     mode    => '0600',
     backup  => '.bak',
-    content => template('powerdns/pdns.mysql.local.erb'),
+    content => template($template),
     notify  => Service['pdns'],
     require => Package[$powerdns::params::package],
   }
