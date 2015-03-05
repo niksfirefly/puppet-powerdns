@@ -20,7 +20,7 @@ class powerdns::mysql(
   $host     = 'localhost',
   $port     = undef,
   $dbname   = 'pdns',
-  $dnssec   = 'yes',
+  $dnssec   = undef,
   $template = 'powerdns/pdns.mysql.local.erb'
 ) inherits powerdns::params {
 
