@@ -46,7 +46,7 @@ class powerdns::mysql(
     owner   => root,
     group   => root,
     mode    => '0600',
-    backup  => '.bak',
+    #backup  => '.bak',
     content => template($template),
     notify  => Service['pdns'],
     require => Package[$powerdns::params::package],
