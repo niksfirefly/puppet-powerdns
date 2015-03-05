@@ -7,11 +7,13 @@ launch=gmysql
 
 # gmysql parameters
 gmysql-host=<%= @host %>
-gmysql-port=<%= @port %>
 gmysql-dbname=<%= @dbname %>
 gmysql-user=<%= @user %>
 gmysql-password=<%= @password %>
 gmysql-dnssec=<%= @dnssec %>
+<% if @port %>
+gmysql-port=<%= @port %>
+<% end %>
 <% if @osfamily == "Redhat" %>       
 <%= @cfg_include_name %>=<%= @cfg_include_path %>
 <% end %>
